@@ -1,5 +1,20 @@
-    @extends('layouts.app')
-    @section('content')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name') }}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+
+<body>
     <header id="header" class="header-section">
         <div class="container  font-weight-bold mon-nav">
             <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
@@ -8,9 +23,8 @@
                         alt="E-Lerning">
                     <span>E-Lerning</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">&nbsp;</span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -62,4 +76,7 @@
     <div class="copyright container py-4 text-center text-white">
         <div class="container"><small>Copyright © Your Website 2020</small></div>
     </div>
-    @endsection
+ <script src="{{ asset('js/app.js') }}" defer></script>
+</body>
+
+</html>
