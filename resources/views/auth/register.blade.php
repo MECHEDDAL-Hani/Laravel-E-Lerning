@@ -32,9 +32,9 @@
                                 @error('email')
                                 <div class="invalid-feedback" role="alert"> {{ $message }} </div>
                                 @enderror
-                                <div class="invalid-feedback">
+                                {{-- <div class="invalid-feedback">
                                     Your email is invalid
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="form-group">
