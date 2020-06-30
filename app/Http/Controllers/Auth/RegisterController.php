@@ -96,9 +96,10 @@ class RegisterController extends Controller
             return $response;
         }
 
-        $Student = new StudentController();
-        $Student->newStudentFromRegister(Auth::id());
-        
+        //$Student = new StudentController();
+        //$Student->newStudentFromRegister(Auth::id());
+        StudentController::newStudentFromRegister(Auth::id());
+
         return $request->wantsJson()
             ? new Response('', 201)
             : redirect($this->redirectPath());

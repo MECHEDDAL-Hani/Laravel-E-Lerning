@@ -93,7 +93,7 @@ class StudentController extends Controller
         //
     }
 
-    public function newStudentFromRegister ($user_id)
+    public static function newStudentFromRegister ($user_id)
     {
         //
         $Student = new Student();
