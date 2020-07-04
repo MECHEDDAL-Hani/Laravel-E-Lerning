@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Student;
+use App\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -100,5 +101,16 @@ class StudentController extends Controller
         $Student->user_id = $user_id;
         $Student->save();
       
+    }
+
+    /**
+     * chech if user is Student
+     *
+     * @param  $id of user
+     * @return bool
+     */
+    public static function isStudent($id)
+    {   
+        return Student::find($id); 
     }
 }

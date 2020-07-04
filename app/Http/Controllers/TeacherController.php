@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Teacher;
+use App\User;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -81,5 +82,17 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
+    }
+
+
+    /**
+     * chech if user is Teacher
+     *
+     * @param  $id of user
+     * @return bool
+     */
+    public static function isTeacher($id)
+    {
+        return Teacher::find($id);
     }
 }

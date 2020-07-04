@@ -20,3 +20,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/* 
+Route::prefix('admin')->group(function () {
+    Route::get('users', function () {
+        // Matches The "/admin/users" URL
+    });
+}); 
+*/
+
+/* 
+GET	        /photos	                index	        photos.index
+GET	        /photos/create	        create	        photos.create
+POST        /photos	                store	        photos.store
+GET	        /photos/{photo}	        show	        photos.show
+GET	        /photos/{photo}/edit	edit	        photos.edit
+PUT/PATCH	/photos/{photo}	        update	        photos.update
+DELETE	    /photos/{photo}	        destroy	        photos.destroy 
+*/

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Admin;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -81,5 +82,16 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         //
+    }
+
+    /**
+     * chech if user is Admin
+     *
+     * @param  $id of user
+     * @return bool
+     */
+    public static function isAdmin($id)
+    {
+        return Admin::find($id);
     }
 }
