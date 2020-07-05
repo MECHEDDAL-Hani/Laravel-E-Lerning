@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {   
         if(AdminController::isAdmin(Auth::id()))
-         return view('admin.dashboard');
+         return AdminController::AdminDashbord();
         if(TeacherController::isTeacher(Auth::id())) 
          return view('teacher.dashboard');
         if(StudentController::isStudent(Auth::id())) 

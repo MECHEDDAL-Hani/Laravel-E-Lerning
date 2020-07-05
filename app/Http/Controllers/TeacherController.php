@@ -95,4 +95,19 @@ class TeacherController extends Controller
     {
         return Teacher::find($id);
     }
+
+    public static function TechernotAdmin()
+    {
+        $teachers = Teacher::all();
+        $teachernotadmin = array();
+
+        for ($i = 0; $i < count($teachers); $i++) {
+            $teacher = Teacher::find($teachers[$i]->student_id, 'student_id');
+            if (!AdminController::isAdmin($teacher->student_id)) {
+                array_push($teachernotadmin, $teacher);
+            }
+        }
+
+        return $teachernotadmin;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Admin;
+use App\Model\Student;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -93,5 +94,12 @@ class AdminController extends Controller
     public static function isAdmin($id)
     {
         return Admin::find($id);
+    }
+
+
+
+    public static function AdminDashbord()
+    {   
+        return view('admin.dashboard', ['students' => StudentController::StudentnotTecher() , 'teachers' => TeacherController::TechernotAdmin()]);
     }
 }

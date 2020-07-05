@@ -35,4 +35,12 @@ class Student extends Model
      */
     protected $hidden = ['created_at', 'updated_at'];
 
+    /* public function doctors()
+    {
+        return $this->hasManyThrough('App\Models\Doctor', 'App\Models\Hospital', 'country_id', 'hospital_id', 'id', 'id');
+    } */
+    public function user()
+    {
+        return $this->hasOne('App\User' , 'id');
+    }
 }

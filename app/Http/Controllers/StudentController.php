@@ -35,7 +35,6 @@ class StudentController extends Controller
      */
     public function create()
     {
-      
     }
 
     /**
@@ -94,13 +93,12 @@ class StudentController extends Controller
         //
     }
 
-    public static function newStudentFromRegister ($user_id)
+    public static function newStudentFromRegister($user_id)
     {
         //
         $Student = new Student();
         $Student->user_id = $user_id;
         $Student->save();
-      
     }
 
     /**
@@ -110,7 +108,22 @@ class StudentController extends Controller
      * @return bool
      */
     public static function isStudent($id)
-    {   
-        return Student::find($id); 
+    {
+        return Student::find($id);
+    }
+
+    public static function StudentnotTecher()
+    {
+        $students = Student::all();
+        $studentnotteachr = array();
+
+        for ($i = 0; $i < count($students); $i++) {
+            $student = Student::find($students[$i]->user_id, 'user_id');
+            if (!TeacherController::isTeacher($student->user_id)) {
+                array_push($studentnotteachr, $student);
+            }
+        }
+        
+        return $studentnotteachr;
     }
 }
