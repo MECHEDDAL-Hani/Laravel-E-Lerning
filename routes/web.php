@@ -21,7 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/teacher/delete' , 'TeacherController@destroy')->name('teacher.destroy');
+Route::post('/teacher/store', 'TeacherController@store')->name('teacher.store');
+Route::post('/teacher/store_2', 'TeacherController@store2')->name('teacher.store2');
 
+Route::post('/Student/delete', 'StudentController@destroy')->name('student.destroy');
+Route::post('/Student/store', 'StudentController@store')->name('student.store');
 /* 
 Route::prefix('admin')->group(function () {
     Route::get('users', function () {

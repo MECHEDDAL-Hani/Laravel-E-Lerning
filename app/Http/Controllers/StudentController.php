@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Student;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -46,6 +47,17 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+        
+        $student = new Student();
+        $student->user_id = $user->id;
+        $student->save();
+
+        return redirect(route('home'));
     }
 
     /**
@@ -85,12 +97,14 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Student  $student
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Request $request)
     {
         //
+        User::destroy($request->input('id_user'));
+        return redirect(route('home'));
     }
 
     public static function newStudentFromRegister($user_id)

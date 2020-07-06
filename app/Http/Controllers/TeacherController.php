@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Student;
 use App\Model\Teacher;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
@@ -37,6 +39,30 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         //
+        $teacher = new Teacher();
+        $teacher->student_id = $request->input('id_user');
+        $teacher ->save();
+        return redirect(route('home'));
+    }
+
+    public function store2(Request $request)
+    {
+        //
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
+        $student = new Student();
+        $student->user_id = $user->id;
+        $student->save();
+
+        $teacher = new Teacher();
+        $teacher->student_id = $user->id;
+        $teacher->save();
+        
+        return redirect(route('home'));
     }
 
     /**
@@ -76,12 +102,14 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Teacher  $teacher
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teacher $teacher)
+    public function destroy(Request $request)
     {
         //
+        User::destroy($request->input('id_teacher'));
+        return redirect( route('home'));
     }
 
 
