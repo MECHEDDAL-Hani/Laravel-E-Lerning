@@ -57,6 +57,8 @@ class StudentController extends Controller
         $student->user_id = $user->id;
         $student->save();
 
+        session()->flash('StoreStudent', 'The Student was created successfully');
+
         return redirect(route('home'));
     }
 
@@ -104,6 +106,9 @@ class StudentController extends Controller
     {
         //
         User::destroy($request->input('id_user'));
+
+        session()->flash('DeletStudent', 'The Student has deleted successfully');
+
         return redirect(route('home'));
     }
 

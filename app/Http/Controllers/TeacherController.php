@@ -42,12 +42,21 @@ class TeacherController extends Controller
         $teacher = new Teacher();
         $teacher->student_id = $request->input('id_user');
         $teacher ->save();
+
+        session()->flash('UpdateStudent', 'The Student was updating successfully');
+
         return redirect(route('home'));
     }
 
     public function store2(Request $request)
     {
         //
+        $validateDate = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required'
+        ]); 
+
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -62,6 +71,8 @@ class TeacherController extends Controller
         $teacher->student_id = $user->id;
         $teacher->save();
         
+        session()->flash('CreeatTeacher' , 'The Teacher was creates successfully');
+
         return redirect(route('home'));
     }
 
@@ -109,6 +120,9 @@ class TeacherController extends Controller
     {
         //
         User::destroy($request->input('id_teacher'));
+
+        session()->flash('DestroyTeacher', 'The Teacher has deleted successfully');
+
         return redirect( route('home'));
     }
 

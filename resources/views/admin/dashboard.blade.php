@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="container">
-
     <div class="row">
-
         <div class="col-lg-3">
 
             <h1 class="my-4 text-center">Dashboard Admin</h1>
@@ -22,9 +20,19 @@
                 </div>
                 <div id='list_student' class="w-100 card my-4">
                     <header class="h3 text-center my-1"> List Student</header>
-                    @if (session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
+                    @if (session()->has('StoreStudent'))
+                    <div class="alert alert-success text-center my-1" role="alert">
+                        {{ session()->get('StoreStudent') }}
+                    </div>
+                    @endif
+                    @if (session()->has('DeletStudent'))
+                    <div class="alert alert-danger text-center my-1" role="alert">
+                        {{ session()->get('DeletStudent') }}
+                    </div>
+                    @endif
+                    @if (session()->has('UpdateStudent'))
+                    <div class="alert alert-info text-center my-1" role="alert">
+                        {{ session()->get('UpdateStudent') }}
                     </div>
                     @endif
                     <table class="table table-hover text-center">
@@ -87,8 +95,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Password</label>
-                                                    <input id="password" type="password" class="form-control 
-                                                        name=" password" required data-eye>
+                                                    <input id="password" type="text" class="form-control" 
+                                                        name="password" required data-eye>
                                                     <div class="form-group m-5">
                                                         <button type="submit" class="btn btn-primary btn-block">
                                                             Add new Student
@@ -105,10 +113,24 @@
                 </div>
                 <div id='list_teacher' class="w-100 card my-4">
                     <header class="h3 text-center my-1"> List Teacher</header>
-                    @if (session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
+                    @if (session()->has('CreeatTeacher'))
+                    <div class="alert alert-success text-center my-1" role="alert">
+                        {{ session()->get('CreeatTeacher') }}
                     </div>
+                    @endif
+                    @if (session()->has('DestroyTeacher'))
+                    <div class="alert alert-danger text-center my-1" role="alert">
+                        {{ session()->get('DestroyTeacher') }}
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>
+                            {{$error}}
+                        </li>
+                        @endforeach
+                    </ul>
                     @endif
                     <table class="table table-hover text-center">
                         <thead>
@@ -128,10 +150,6 @@
                                 <td>{{$teacher->student->user->email}}</td>
                                 <td>{{$teacher->student->user->created_at}}</td>
                                 <td>
-                                    {{-- <button type="button" class="btn btn-danger">Delet</button>
-                                                            <button type="button" class="btn btn-success">Success</button> --}}
-                                    {{-- <form class="d-inline" action="{{ route('teacher.destroy' , ['id' => $teacher->student_id]) }}"
-                                    method="POST"> --}}
                                     <form class="d-inline" action="{{ route('teacher.destroy') }}" method="POST">
                                         @csrf
                                         <input type="hidden" value="{{$teacher->student_id}}" name="id_teacher">
@@ -145,16 +163,16 @@
                     </table>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">New
                         Teacher </button>
-                    
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
+
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="card-wrapper">
                                     <div class="card fat">
                                         <div class="card-body">
                                             <h4 class="card-title text-center">New Teacher</h4>
-                                            <form method="POST" class="my-login-validation" action="{{ url( route('teacher.store2') ) }}">
+                                            <form method="POST" class="my-login-validation" action="{{ url(route('teacher.store2')) }}">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="name">Name</label>
@@ -166,11 +184,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="password">Password</label>
-                                                    <input id="password" type="password" class="form-control 
-                                                                            name=" password" required data-eye>
+                                                    <input id="password" type="text" class="form-control" 
+                                                                    name="password" required data-eye>
                                                     <div class="form-group m-5">
                                                         <button type="submit" class="btn btn-primary btn-block">
-                                                            Add new Student
+                                                            Add new Teacher
                                                         </button>
                                                     </div>
                                                 </div>
