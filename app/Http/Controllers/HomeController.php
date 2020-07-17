@@ -25,13 +25,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-    {   
+    {
         if(AdminController::isAdmin(Auth::id()))
          return AdminController::AdminDashbord();
         if(TeacherController::isTeacher(Auth::id())) 
-         return view('teacher.dashboard');
+         return TeacherController::teacherDashbord();
         if(StudentController::isStudent(Auth::id())) 
          return view('student.dashboard');
-
     }
 }

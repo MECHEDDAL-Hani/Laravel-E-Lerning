@@ -27,6 +27,11 @@ Route::post('/teacher/store_2', 'TeacherController@store2')->name('teacher.store
 
 Route::post('/Student/delete', 'StudentController@destroy')->name('student.destroy');
 Route::post('/Student/store', 'StudentController@store')->name('student.store');
+
+Route::get('/courses', 'CourseController@index')->name('course.index');
+Route::post('/courses', 'CourseController@store')->name('course.store');
+Route::post('/courses/delete', 'CourseController@destroy')->name('course.destroy');
+Route::post('/courses/{$id}', 'CourseController@show')->name('course.show');
 /* 
 Route::prefix('admin')->group(function () {
     Route::get('users', function () {

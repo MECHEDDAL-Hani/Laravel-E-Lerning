@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Course;
 use App\Model\Student;
 use App\Model\Teacher;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
@@ -71,7 +73,7 @@ class TeacherController extends Controller
         $teacher->student_id = $user->id;
         $teacher->save();
         
-        session()->flash('CreeatTeacher' , 'The Teacher was creates successfully');
+        session()->flash('CreeatTeacher' , 'The Teacher created successfully');
 
         return redirect(route('home'));
     }
@@ -151,5 +153,10 @@ class TeacherController extends Controller
         }
 
         return $teachernotadmin;
+    }
+
+    public static function TeacherDashbord()
+    {
+        return view('teacher.dashboard', ['courses' => Course::where('teacher_id', Auth::id())->get()]);
     }
 }

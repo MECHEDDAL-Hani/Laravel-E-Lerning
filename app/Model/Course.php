@@ -19,5 +19,10 @@ class Course extends Model
      *
      * @var array
      */
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $hidden = ['updated_at'];
+
+    public function teacher()
+    {
+        return $this->hasOne('App\Model\teacher', 'student_id');
+    }
 }

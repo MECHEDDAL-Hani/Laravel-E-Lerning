@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -15,6 +17,7 @@ class CourseController extends Controller
     public function index()
     {
         //
+        return view('courses', ['courses' => Course::with('teacher')->get()]);
     }
 
     /**
@@ -36,6 +39,19 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $validateDate = $request->validate([
+            'title' => 'required|max:255',     
+        ]);
+        
+        $course = new Course();
+        $course->title = $request->input('title');
+        $course->description = $request->input('description');
+        $course->teacher_id = $request->input('teacher_id');
+        $course->save();
+
+        session()->flash('CreeatCourse', 'The Course created successfully');
+
+        return redirect(route('home'));
     }
 
     /**
@@ -75,11 +91,14 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Course  $course
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Request $request)
     {
-        //
+        Course::destroy($request->input('id'));  
+        session()->flash('DestroyCourse', 'The Course has deleted successfully');
+
+        return redirect(route('home')); 
     }
 }
