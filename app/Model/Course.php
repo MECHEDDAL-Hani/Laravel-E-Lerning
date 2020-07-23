@@ -23,6 +23,6 @@ class Course extends Model
 
     public function teacher()
     {
-        return $this->hasOne('App\Model\teacher', 'student_id');
+        return $this->hasOne('App\Model\teacher', 'student_id' , 'teacher_id');
     }
 }
