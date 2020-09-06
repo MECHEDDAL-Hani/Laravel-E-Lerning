@@ -74,7 +74,7 @@
         </section>
     </div>
     <div class="copyright container py-4 text-center text-white">
-        <div class="container"><small>Copyright © Your Website 2020</small></div>
+        <div class="container"><small>Copyright © E-Lerning 2020</small></div>
     </div>
  <script src="{{ asset('js/app.js') }}" defer></script>
 </body>

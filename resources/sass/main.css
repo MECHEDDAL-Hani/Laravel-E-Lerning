@@ -79,3 +79,16 @@ body .my-login-page {
         padding: 15px;
     }
 }
+
+
+.ck.ck-editor {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+}
+
+.ck.ck-content {
+    font-size: 1em;
+    line-height: 1.6em;
+    margin-bottom: 0.8em;
+    min-height: 500px;
+    padding: 1.5em 2em;
+}

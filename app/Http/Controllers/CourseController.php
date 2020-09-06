@@ -101,4 +101,10 @@ class CourseController extends Controller
 
         return redirect(route('home')); 
     }
+
+    public function info(Request $request, $id)
+    {
+        return
+            view('teacher.courseinfo' , ['id' => $id]);
+    }
 }

@@ -49,7 +49,7 @@
                             <input type="hidden" value="{{$course->id}}" name="id">
                             <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                         </form>
-                        <a href=""><button type="button" class="btn btn-info btn-sm my-2 my-sm-0">More Info</button></a>
+                        <a href="{{ route('course.info' , [$course->id]) }}"><button type="button" class="btn btn-info btn-sm my-2 my-sm-0">More Info</button></a>
                     </td>
                 </tr>
                 @endforeach
