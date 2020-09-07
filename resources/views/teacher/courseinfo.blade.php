@@ -166,8 +166,9 @@
                             @endforeach --}}
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NewExame">New
-                        Exame </button>
+                   <a href="{{ route('exam.creeat' , ['id' => $id] ) }}"><button type="button" class="btn btn-primary w-100"
+                            data-toggle="modal" data-target="#NewLessson">New
+                            Exam </button></a>
 
                     <div class="modal fade" id="NewExame" tabindex="-1" role="dialog" aria-labelledby="NewExame"
                         aria-hidden="true">

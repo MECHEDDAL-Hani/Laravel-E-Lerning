@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\Exam;
+use App\Model\Practice;
+use App\Model\Resource;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -12,9 +14,10 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        return view("teacher.examcreeat", ['id' => $id]);
     }
 
     /**
@@ -36,6 +39,22 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         //
+        $resource = new Resource();
+        $resource->title = $request->input('title');
+        $resource->description = $request->input('description');
+        $resource->content = $request->input('content');
+        $resource->course_id = intval($request->input('id_course'));
+        $resource->save();
+
+        $practice = new Practice();
+        $practice->resource_id = $resource->id;
+        $practice->save();
+
+        $exam = new Exam();
+        $exam->practice_id = $practice->resource_id;
+        $exam->save();
+
+        return redirect()->route('course.info', [$request->input('id_course')]);
     }
 
     /**

@@ -40,6 +40,9 @@ Route::post('/course/info/newlesson', 'LessonController@store')->name('lesson.st
 Route::get('/course/{id}/info/newexercise', 'ExerciseController@index')->name('exercise.creeat');
 Route::post('/course/info/newexercise', 'ExerciseController@store')->name('exercise.store');
 
+Route::get('/course/{id}/info/newexam', 'ExamController@index')->name('exam.creeat');
+Route::post('/course/info/newexam', 'ExamController@store')->name('exam.store');
+
 
 /* 
 Route::prefix('admin')->group(function () {
