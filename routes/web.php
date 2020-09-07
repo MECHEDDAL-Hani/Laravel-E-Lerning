@@ -33,8 +33,12 @@ Route::post('/courses', 'CourseController@store')->name('course.store');
 Route::post('/courses/delete', 'CourseController@destroy')->name('course.destroy');
 Route::post('/courses/{$id}', 'CourseController@show')->name('course.show');
 Route::get('/course/{id}/info', 'CourseController@info')->name('course.info');
+
 Route::get('/course/{id}/info/newlesson', 'LessonController@index')->name('lesson.creeat');
 Route::post('/course/info/newlesson', 'LessonController@store')->name('lesson.store');
+
+Route::get('/course/{id}/info/newexercise', 'ExerciseController@index')->name('exercise.creeat');
+Route::post('/course/info/newexercise', 'ExerciseController@store')->name('exercise.store');
 
 
 /* 

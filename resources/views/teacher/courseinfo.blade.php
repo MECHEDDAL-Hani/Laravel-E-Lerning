@@ -88,8 +88,9 @@
                             @endforeach --}}
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NewExercice">New
-                        Exercice </button>
+                   <a href="{{ route('exercise.creeat' , ['id' => $id] ) }}"><button type="button" class="btn btn-primary w-100"
+                            data-toggle="modal" data-target="#NewLessson">New
+                            Exercise </button></a>
 
                     <div class="modal fade" id="NewExercice" tabindex="-1" role="dialog" aria-labelledby="NewExercice"
                         aria-hidden="true">

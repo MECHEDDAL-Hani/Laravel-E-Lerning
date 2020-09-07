@@ -26,7 +26,7 @@ class Practice extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['resource_id'];
 
     /**
      * The attributes that should be hidden for arrays.
