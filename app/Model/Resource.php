@@ -20,4 +20,9 @@ class Resource extends Model
      * @var array
      */
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function course()
+    {
+        return $this->hasOne('App\Model\course', 'id', 'course_id');
+    }
 }

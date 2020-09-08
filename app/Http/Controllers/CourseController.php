@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Course;
+use App\Model\Exam;
+use App\Model\Exercise;
+use App\Model\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -105,6 +108,6 @@ class CourseController extends Controller
     public function info(Request $request, $id)
     {
         return
-            view('teacher.courseinfo' , ['id' => $id]);
+            view('teacher.courseinfo', ['id' => $id , 'lessons' => Lesson::with('resource')->get(), 'exercises' => Exercise::with('practice')->get(), 'exams' => Exam::with('practice')->get()]);
     }
 }

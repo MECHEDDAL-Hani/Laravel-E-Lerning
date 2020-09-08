@@ -34,4 +34,9 @@ class Exam extends Model
      * @var array
      */
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function practice()
+    {
+        return $this->hasOne('App\Model\practice', 'resource_id', 'practice_id');
+    }
 }

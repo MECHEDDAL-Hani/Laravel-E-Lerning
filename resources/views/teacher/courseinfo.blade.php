@@ -2,13 +2,16 @@
 
 @section('content')
 <div class="container">
-    
+
     <div class="row">
-        <div class="col-lg-3">
-            <div class="list-group">
-                <a href="#Liste-Lessons" class="list-group-item">Liste Lessons</button></a>
-                <a href="#List-Exercices" class="list-group-item">Liste Exercices</button></a>
-                <a href="#List-Exame" class="list-group-item">Exame</button></a>
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#Liste-Lessons" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true">Liste Lessons</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#List-Exercices" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false">Liste Exercices</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#List-Exame" role="tab"
+                    aria-controls="v-pills-messages" aria-selected="false">Exame</a>
             </div>
         </div>
         <div class="col-lg-9 row">
@@ -26,34 +29,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($students as $student)
+                            @foreach ($lessons as $lesson)
                             <tr>
-                                <td scope="row">{{$student->user_id}}</td>
-                            <td>{{$student->user->name}}</td>
-                            <td>{{$student->user->email}}</td>
-                            <td>{{$student->user->created_at}}</td>
-                            <td>
-                                <form class="d-inline" action="{{ route('student.destroy') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{$student->user_id}}" name="id_user">
-                                    <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
-                                </form>
-                                <form class="d-inline" action="{{ route('teacher.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{$student->user_id}}" name="id_user">
-                                    <button class="btn btn-success btn-sm my-2 my-sm-0" type="submit">Update</button>
-                                </form>
-                            </td>
+                                <td>{{$lesson->resource->title}}</td>
+                                <td>{{$lesson->resource->description}}</td>
+                                <td>{{$lesson->resource->created_at}}</td>
+                                <td>
+                                    <form class="d-inline" action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{$lesson->resource->id}}" name="id_user">
+                                        <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
+                                    </form>
+                                    <form class="d-inline" action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{$lesson->resource->id}}" name="id_user">
+                                        <button class="btn btn-success btn-sm my-2 my-sm-0"
+                                            type="submit">Update</button>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
-                 <a href="{{ route('lesson.creeat' , ['id' => $id] ) }}"><button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
-                        Lesson </button></a>
-
-                    
+                    <a href="{{ route('lesson.creeat' , ['id' => $id] ) }}"><button type="button"
+                            class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
+                            Lesson </button></a>
                 </div>
-
                 <div id='List-Exercices' class="w-100 card my-4">
                     <header class="h3 text-center my-1"> List Exercices</header>
                     <table class="table table-hover text-center">
@@ -66,72 +67,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($students as $student)
-                                            <tr>
-                                                <td scope="row">{{$student->user_id}}</td>
-                            <td>{{$student->user->name}}</td>
-                            <td>{{$student->user->email}}</td>
-                            <td>{{$student->user->created_at}}</td>
-                            <td>
-                                <form class="d-inline" action="{{ route('student.destroy') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{$student->user_id}}" name="id_user">
-                                    <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
-                                </form>
-                                <form class="d-inline" action="{{ route('teacher.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{$student->user_id}}" name="id_user">
-                                    <button class="btn btn-success btn-sm my-2 my-sm-0" type="submit">Update</button>
-                                </form>
-                            </td>
+                            @foreach ($exercises as $exercise)
+                            <tr>
+                                <td>{{$exercise->practice->resource->title}}</td>
+                                <td>{{$exercise->practice->resource->description}}</td>
+                                <td>{{$exercise->practice->resource->created_at}}</td>
+                                <td>
+                                    <form class="d-inline" action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $exercise->practice->resource->id }}"
+                                            name="id_user">
+                                        <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
+                                    </form>
+                                    <form class="d-inline" action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{$exercise->practice->resource->id}}"
+                                            name="id_user">
+                                        <button class="btn btn-success btn-sm my-2 my-sm-0"
+                                            type="submit">Update</button>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
-                   <a href="{{ route('exercise.creeat' , ['id' => $id] ) }}"><button type="button" class="btn btn-primary w-100"
-                            data-toggle="modal" data-target="#NewLessson">New
+                    <a href="{{ route('exercise.creeat' , ['id' => $id] ) }}"><button type="button"
+                            class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
                             Exercise </button></a>
-
-                    <div class="modal fade" id="NewExercice" tabindex="-1" role="dialog" aria-labelledby="NewExercice"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="card-wrapper">
-                                    <div class="card fat">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center">New Exercice</h4>
-                                            <form method="POST" class="my-login-validation"
-                                                action="{{ url( route('student.store') ) }}">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="title">Title</label>
-                                                    <input id="title" type="text" class="form-control " name="title"
-                                                        required autofocus>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="description">Description</label>
-                                                    <input id="description" type="text" class="form-control "
-                                                        name="description" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password">Password</label>
-                                                    <input id="password" type="text" class="form-control"
-                                                        name="password" required data-eye>
-                                                    <div class="form-group m-5">
-                                                        <button type="submit" class="btn btn-primary btn-block">
-                                                            Add new Exercice
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
                 <div id='List-Exame' class="w-100 card my-4">
                     <header class="h3 text-center my-1"> Exame</header>
                     <table class="table table-hover text-center">
@@ -144,74 +107,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($students as $student)
-                                                            <tr>
-                                                                <td scope="row">{{$student->user_id}}</td>
-                            <td>{{$student->user->name}}</td>
-                            <td>{{$student->user->email}}</td>
-                            <td>{{$student->user->created_at}}</td>
-                            <td>
-                                <form class="d-inline" action="{{ route('student.destroy') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{$student->user_id}}" name="id_user">
-                                    <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
-                                </form>
-                                <form class="d-inline" action="{{ route('teacher.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{$student->user_id}}" name="id_user">
-                                    <button class="btn btn-success btn-sm my-2 my-sm-0" type="submit">Update</button>
-                                </form>
-                            </td>
+                            @if (empty($exam))
+                            @foreach ($exams as $exam)
+                            <tr>
+                                <td>{{$exam->practice->resource->title}}</td>
+                                <td>{{$exam->practice->resource->description}}</td>
+                                <td>{{$exam->practice->resource->created_at}}</td>
+                                <td>
+                                    <form class="d-inline" action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $exam->practice->resource->id }}" name="id_user">
+                                        <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
+                                    </form>
+                                    <form class="d-inline" action="#" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{$exam->practice->resource->id}}" name="id_user">
+                                        <button class="btn btn-success btn-sm my-2 my-sm-0"
+                                            type="submit">Update</button>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
+                            @endif
                         </tbody>
                     </table>
-                   <a href="{{ route('exam.creeat' , ['id' => $id] ) }}"><button type="button" class="btn btn-primary w-100"
-                            data-toggle="modal" data-target="#NewLessson">New
+                    @if (empty($exam))
+                    <a href="{{ route('exam.creeat' , ['id' => $id] ) }}"><button type="button"
+                            class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
                             Exam </button></a>
-
-                    <div class="modal fade" id="NewExame" tabindex="-1" role="dialog" aria-labelledby="NewExame"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="card-wrapper">
-                                    <div class="card fat">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center">New Exame</h4>
-                                            <form method="POST" class="my-login-validation"
-                                                action="{{ url( route('student.store') ) }}">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="title">Title</label>
-                                                    <input id="title" type="text" class="form-control " name="title"
-                                                        required autofocus>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="description">Description</label>
-                                                    <input id="description" type="text" class="form-control "
-                                                        name="description" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="password">Password</label>
-                                                    <input id="password" type="text" class="form-control"
-                                                        name="password" required data-eye>
-                                                    <div class="form-group m-5">
-                                                        <button type="submit" class="btn btn-primary btn-block">
-                                                            Add new Exame
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
