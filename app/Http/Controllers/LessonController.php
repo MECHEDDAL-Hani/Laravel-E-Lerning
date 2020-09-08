@@ -59,35 +59,44 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Lesson  $lesson
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Lesson $lesson)
+    public function show()
     {
         //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Lesson  $lesson
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lesson $lesson)
+    public function edit($id, $resource_id)
     {
         //
+        $lesson = Lesson::find($resource_id);
+        return view("teacher.lessonupdate", ['id' => $id, 'lesson' => $lesson]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lesson $lesson)
+    public function update(Request $request, $id)
     {
         //
+        $resource = Resource::find($request->input('resource_id'));
+        $resource->title = $request->input('title');
+        $resource->description = $request->input('description');
+        $resource->content = $request->input('content');
+        $resource->save();
+
+       return redirect()->route('course.info', [$id]);
     }
 
     /**

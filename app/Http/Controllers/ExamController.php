@@ -71,24 +71,32 @@ class ExamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Exam  $exam
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Exam $exam)
+    public function edit($id, $practice_id)
     {
         //
+        $exam = Exam::find($practice_id);
+        return view("teacher.examupdate", ['id' => $id, 'exam' => $exam]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exam $exam)
+    public function update(Request $request, $id)
     {
         //
+        $resource = Resource::find($request->input('resource_id'));
+        $resource->title = $request->input('title');
+        $resource->description = $request->input('description');
+        $resource->content = $request->input('content');
+        $resource->save();
+
+        return redirect()->route('course.info', [$id]);
     }
 
     /**

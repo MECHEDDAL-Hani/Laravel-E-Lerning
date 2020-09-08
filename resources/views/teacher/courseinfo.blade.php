@@ -35,24 +35,20 @@
                                 <td>{{$lesson->resource->description}}</td>
                                 <td>{{$lesson->resource->created_at}}</td>
                                 <td>
-                                    <form class="d-inline" action="#" method="POST">
+                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}" method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{$lesson->resource->id}}" name="id_user">
+                                        <input type="hidden" value="{{$lesson->resource->id}}" name="resource_id">
                                         <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                                     </form>
-                                    <form class="d-inline" action="#" method="POST">
-                                        @csrf
-                                        <input type="hidden" value="{{$lesson->resource->id}}" name="id_user">
-                                        <button class="btn btn-success btn-sm my-2 my-sm-0"
-                                            type="submit">Update</button>
-                                    </form>
+                                    <a href="{{ route('lesson.edit' , ['id' => $id , 'resource_id' => $lesson->resource_id] ) }}"><button type="button"
+                                            class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <a href="{{ route('lesson.creeat' , ['id' => $id] ) }}"><button type="button"
-                            class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
+                            class="btn btn-primary w-100">New
                             Lesson </button></a>
                 </div>
                 <div id='List-Exercices' class="w-100 card my-4">
@@ -73,26 +69,20 @@
                                 <td>{{$exercise->practice->resource->description}}</td>
                                 <td>{{$exercise->practice->resource->created_at}}</td>
                                 <td>
-                                    <form class="d-inline" action="#" method="POST">
+                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}" method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{ $exercise->practice->resource->id }}"
-                                            name="id_user">
+                                        <input type="hidden" value="{{$exercise->practice->resource->id}}" name="resource_id">
                                         <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                                     </form>
-                                    <form class="d-inline" action="#" method="POST">
-                                        @csrf
-                                        <input type="hidden" value="{{$exercise->practice->resource->id}}"
-                                            name="id_user">
-                                        <button class="btn btn-success btn-sm my-2 my-sm-0"
-                                            type="submit">Update</button>
-                                    </form>
+                                   <a href="{{ route('exercise.edit' , ['id' => $id , 'practice_id' => $exercise->practice_id ] ) }}"><button type="button"
+                                        class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <a href="{{ route('exercise.creeat' , ['id' => $id] ) }}"><button type="button"
-                            class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
+                            class="btn btn-primary w-100">New
                             Exercise </button></a>
                 </div>
                 <div id='List-Exame' class="w-100 card my-4">
@@ -114,17 +104,13 @@
                                 <td>{{$exam->practice->resource->description}}</td>
                                 <td>{{$exam->practice->resource->created_at}}</td>
                                 <td>
-                                    <form class="d-inline" action="#" method="POST">
+                                   <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}" method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{ $exam->practice->resource->id }}" name="id_user">
+                                        <input type="hidden" value="{{$exam->practice->resource->id}}" name="resource_id">
                                         <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                                     </form>
-                                    <form class="d-inline" action="#" method="POST">
-                                        @csrf
-                                        <input type="hidden" value="{{$exam->practice->resource->id}}" name="id_user">
-                                        <button class="btn btn-success btn-sm my-2 my-sm-0"
-                                            type="submit">Update</button>
-                                    </form>
+                                    <a href="{{ route('exam.edit' , ['id' => $id , 'practice_id' => $exam->practice_id ] ) }}"><button type="button"
+                                            class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -133,7 +119,7 @@
                     </table>
                     @if (empty($exam))
                     <a href="{{ route('exam.creeat' , ['id' => $id] ) }}"><button type="button"
-                            class="btn btn-primary w-100" data-toggle="modal" data-target="#NewLessson">New
+                            class="btn btn-primary w-100">New
                             Exam </button></a>
                     @endif
                 </div>

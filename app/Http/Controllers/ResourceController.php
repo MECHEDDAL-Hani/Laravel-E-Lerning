@@ -75,11 +75,13 @@ class ResourceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Resource  $resource
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resource $resource)
+    public function destroy(Request $request , $id)
     {
         //
+        Resource::destroy($request->input('resource_id'));
+        return redirect()->route('course.info', [$id]);
     }
 }
