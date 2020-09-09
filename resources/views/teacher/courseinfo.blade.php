@@ -35,13 +35,19 @@
                                 <td>{{$lesson->resource->description}}</td>
                                 <td>{{$lesson->resource->created_at}}</td>
                                 <td>
-                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}" method="POST">
+                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}"
+                                        method="POST">
                                         @csrf
                                         <input type="hidden" value="{{$lesson->resource->id}}" name="resource_id">
                                         <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                                     </form>
-                                    <a href="{{ route('lesson.edit' , ['id' => $id , 'resource_id' => $lesson->resource_id] ) }}"><button type="button"
+                                    <a
+                                        href="{{ route('lesson.edit' , ['id' => $id , 'resource_id' => $lesson->resource_id] ) }}"><button
+                                            type="button"
                                             class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
+                                    <a
+                                        href="{{ route('lesson.show' , ['id' => $id , 'resource_id' => $lesson->resource_id] ) }}"><button
+                                            type="button" class="btn btn-secondary btn-sm my-2 my-sm-0">Show</button></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -69,13 +75,19 @@
                                 <td>{{$exercise->practice->resource->description}}</td>
                                 <td>{{$exercise->practice->resource->created_at}}</td>
                                 <td>
-                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}" method="POST">
+                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}"
+                                        method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{$exercise->practice->resource->id}}" name="resource_id">
+                                        <input type="hidden" value="{{$exercise->practice->resource->id}}"
+                                            name="resource_id">
                                         <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                                     </form>
-                                   <a href="{{ route('exercise.edit' , ['id' => $id , 'practice_id' => $exercise->practice_id ] ) }}"><button type="button"
-                                        class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
+                                    <a
+                                        href="{{ route('exercise.edit' , ['id' => $id , 'practice_id' => $exercise->practice_id ] ) }}"><button
+                                            type="button"
+                                            class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
+                                   <a href="{{ route('exercise.show' , ['id' => $id , 'practice_id' => $exercise->practice_id ] ) }}"><button type="button"
+                                        class="btn btn-secondary btn-sm my-2 my-sm-0">Show</button></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -104,14 +116,18 @@
                                 <td>{{$exam->practice->resource->description}}</td>
                                 <td>{{$exam->practice->resource->created_at}}</td>
                                 <td>
-                                   <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}" method="POST">
+                                    <form class="d-inline" action="{{ route('resource.destroy', ['id' => $id]) }}"
+                                        method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{$exam->practice->resource->id}}" name="resource_id">
+                                        <input type="hidden" value="{{$exam->practice->resource->id}}"
+                                            name="resource_id">
                                         <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">Delet</button>
                                     </form>
                                     <a href="{{ route('exam.edit' , ['id' => $id , 'practice_id' => $exam->practice_id ] ) }}"><button type="button"
                                             class="btn btn-success btn-sm my-2 my-sm-0">Update</button></a>
-                                </td>
+                                    <a href="{{ route('exam.show' , ['id' => $id , 'practice_id' => $exam->practice_id ] ) }}"><button type="button"
+                                            class="btn btn-secondary btn-sm my-2 my-sm-0">Show</button></a>
+                                    </td>
                             </tr>
                             @endforeach
                             @endif

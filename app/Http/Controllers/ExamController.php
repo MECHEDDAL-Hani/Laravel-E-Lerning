@@ -60,12 +60,14 @@ class ExamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Exam  $exam
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Exam $exam)
+    public function show($id, $practice_id)
     {
         //
+        $exam = Exam::find($practice_id);
+        return view("teacher.showexam", ['id' => $id, 'exam' => $exam]);
     }
 
     /**

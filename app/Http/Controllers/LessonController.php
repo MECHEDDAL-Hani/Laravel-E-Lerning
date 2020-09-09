@@ -62,10 +62,11 @@ class LessonController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id, $resource_id)
     {
         //
-        
+        $lesson = Lesson::find($resource_id);
+        return view("teacher.showlesson", ['id' => $id, 'lesson' => $lesson]);   
     }
 
     /**

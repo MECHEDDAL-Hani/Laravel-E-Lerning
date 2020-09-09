@@ -64,9 +64,11 @@ class ExerciseController extends Controller
      * @param  \App\Model\Exercise  $exercise
      * @return \Illuminate\Http\Response
      */
-    public function show(Exercise $exercise)
+    public function show($id, $practice_id)
     {
         //
+        $exercise = Exercise::find($practice_id);
+        return view("teacher.showexercise", ['id' => $id, 'exercise' => $exercise]); 
     }
 
     /**
