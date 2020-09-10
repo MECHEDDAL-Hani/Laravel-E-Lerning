@@ -71,6 +71,20 @@ class ExamController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function show2($id, $practice_id)
+    {
+        //
+        $exam = Exam::find($practice_id);
+        return view("student.showexam", ['id' => $id, 'exam' => $exam]);
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * 

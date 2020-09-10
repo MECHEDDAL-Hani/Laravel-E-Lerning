@@ -105,9 +105,15 @@ class CourseController extends Controller
         return redirect(route('home')); 
     }
 
-    public function info(Request $request, $id)
+    public function info($id)
     {
         return
             view('teacher.courseinfo', ['id' => $id , 'lessons' => Lesson::with('resource')->get(), 'exercises' => Exercise::with('practice')->get(), 'exams' => Exam::with('practice')->get()]);
+    }
+
+    public function info2($id)
+    {
+        return
+            view('student.courseinfo', ['id' => $id, 'lessons' => Lesson::with('resource')->get(), 'exercises' => Exercise::with('practice')->get(), 'exams' => Exam::with('practice')->get()]);
     }
 }

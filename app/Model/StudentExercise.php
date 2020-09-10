@@ -12,7 +12,7 @@ class StudentExercise extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['student_id'];
 
     /**
      * The attributes that should be hidden for arrays.

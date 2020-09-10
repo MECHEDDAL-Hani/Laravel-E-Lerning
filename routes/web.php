@@ -53,6 +53,16 @@ Route::post('/course/info/{id}/updateexam', 'ExamController@update')->name('exam
 Route::get('/course/info/{id}/showexam/{practice_id}', 'ExamController@show')->name('exam.show');
 
 Route::post('/course/{id}/resource', 'ResourceController@destroy')->name('resource.destroy');
+Route::post('/course/register', 'StudentCourseController@store')->name('studentcourse.store');
+
+Route::get('/course/{id}/info', 'CourseController@info2')->name('course.info2');
+Route::get('/course/info/{id}/showlesson/{resource_id}', 'LessonController@show2')->name('lesson.show2');
+Route::get('/course/info/{id}/showexercise/{practice_id}', 'ExerciseController@show2')->name('exercise.show2');
+Route::get('/course/info/{id}/showexam/{practice_id}', 'ExamController@show2')->name('exam.show2');
+Route::post('/course/info/studentexercise', 'StudentExerciseController@store')->name('studentexercise.store');
+Route::post('/course/info/studentexam', 'StudentExamController@store')->name('studentexam.store');
+
+
 
 
 

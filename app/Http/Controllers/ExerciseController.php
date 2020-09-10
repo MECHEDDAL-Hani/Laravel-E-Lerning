@@ -61,7 +61,7 @@ class ExerciseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Exercise  $exercise
+     * 
      * @return \Illuminate\Http\Response
      */
     public function show($id, $practice_id)
@@ -69,6 +69,19 @@ class ExerciseController extends Controller
         //
         $exercise = Exercise::find($practice_id);
         return view("teacher.showexercise", ['id' => $id, 'exercise' => $exercise]); 
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function show2($id, $practice_id)
+    {
+        //
+        $exercise = Exercise::find($practice_id);
+        return view("student.showexercise", ['id' => $id, 'exercise' => $exercise]);
     }
 
     /**

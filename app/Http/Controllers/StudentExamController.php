@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Reponce;
 use App\Model\StudentExam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentExamController extends Controller
 {
@@ -36,6 +38,17 @@ class StudentExamController extends Controller
     public function store(Request $request)
     {
         //
+        $reponce =  new Reponce();
+        $reponce->answare = $request->input('answare');
+        $reponce->save();
+
+        $studentexam = new StudentExam();
+        $studentexam->exam_id = intval($request->input('exam_id'));
+        $studentexam->student_id = Auth::id();
+        $studentexam->reponce_id = $reponce->id;
+        $studentexam->save();
+
+        return redirect(route('course.info2', ['id' => $request->input('id')]));
     }
 
     /**

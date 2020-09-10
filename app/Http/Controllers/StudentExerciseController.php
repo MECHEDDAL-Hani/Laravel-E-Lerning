@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Reponce;
 use App\Model\StudentExercise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentExerciseController extends Controller
 {
@@ -36,6 +38,17 @@ class StudentExerciseController extends Controller
     public function store(Request $request)
     {
         //
+        $reponce =  new Reponce();
+        $reponce->answare = $request->input('answare');
+        $reponce->save();
+
+        $studentexercise = new StudentExercise();
+        $studentexercise->exercise_id = intval($request->input('exercise_id'));
+        $studentexercise->student_id = Auth::id();
+        $studentexercise->reponce_id = $reponce->id ;
+        $studentexercise->save();
+
+        return redirect(route('course.info2' , ['id' => $request->input('id')]));
     }
 
     /**

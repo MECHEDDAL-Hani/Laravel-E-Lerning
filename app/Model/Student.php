@@ -43,4 +43,9 @@ class Student extends Model
     {
         return $this->hasOne('App\User' , 'id');
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Model\Course', 'student_courses', 'student_id', 'course_id', 'user_id', 'id');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\StudentCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentCourseController extends Controller
 {
@@ -36,6 +37,12 @@ class StudentCourseController extends Controller
     public function store(Request $request)
     {
         //
+         StudentCourse::create([
+            'student_id' => Auth::id(),
+            'course_id' => intval($request->input('course_id')),
+        ]);
+
+      return redirect(route('home'));
     }
 
     /**

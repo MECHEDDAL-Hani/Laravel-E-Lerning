@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div id='list_student' class="w-100 card my-4">
+    <div class="w-100 card my-4">
         <header class="h3 text-center my-1"> List Courses</header>
 
         <table class="table table-hover text-center">
@@ -12,6 +12,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Teacher</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,10 +22,17 @@
                     <td>{{$course->title}}</td>
                     <td>{{$course->description}}</td>
                     <td>{{$course->teacher->student->user->name}}</td>
-                    
+                    <td>
+                        <form class="d-inline" action="{{ route('studentcourse.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$course->id}}" name="course_id">
+                            <button class="btn btn-success btn-sm my-2 my-sm-0" type="submit">Register</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    @endsection
+</div>
+@endsection

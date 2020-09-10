@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Course;
 use App\Model\Student;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
@@ -144,5 +146,10 @@ class StudentController extends Controller
         }
         
         return $studentnotteachr;
+    }
+
+    public static function StudentDashbord()
+    { 
+         return view('student.dashboard', ['courses' => Student::find(auth::id())->courses()->get()]);
     }
 }

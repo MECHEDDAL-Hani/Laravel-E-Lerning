@@ -17,12 +17,12 @@ class CreateStudentExamsTable extends Migration
             
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('exercise_id');
+            $table->unsignedBigInteger('exam_id');
             $table->unsignedBigInteger('reponce_id');
             $table->integer('note')->default(0);
             $table->timestamps();
             $table->foreign('student_id')->references('user_id')->on('students');
-            $table->foreign('exercise_id')->references('practice_id')->on('exercises');
+            $table->foreign('exam_id')->references('practice_id')->on('exams');
             $table->foreign('reponce_id')->references('id')->on('reponces');
 
         });

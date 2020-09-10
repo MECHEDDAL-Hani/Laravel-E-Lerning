@@ -30,7 +30,7 @@ class HomeController extends Controller
          return AdminController::AdminDashbord();
         if(TeacherController::isTeacher(Auth::id())) 
          return TeacherController::teacherDashbord();
-        if(StudentController::isStudent(Auth::id())) 
-         return view('student.dashboard');
+        if(StudentController::isStudent(Auth::id()))
+        return StudentController::StudentDashbord();
     }
 }

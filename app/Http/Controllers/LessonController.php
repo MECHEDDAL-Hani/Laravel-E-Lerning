@@ -70,6 +70,20 @@ class LessonController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function show2($id, $resource_id)
+    {
+        //
+        $lesson = Lesson::find($resource_id);
+        return view("student.showlesson", ['id' => $id, 'lesson' => $lesson]);
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * 

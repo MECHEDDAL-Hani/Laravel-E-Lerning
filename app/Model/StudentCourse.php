@@ -12,7 +12,7 @@ class StudentCourse extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['student_id', 'course_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -20,4 +20,5 @@ class StudentCourse extends Model
      * @var array
      */
     protected $hidden = ['created_at', 'updated_at'];
+
 }
