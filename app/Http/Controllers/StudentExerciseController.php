@@ -54,12 +54,14 @@ class StudentExerciseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\StudentExercise  $studentExercise
      * @return \Illuminate\Http\Response
      */
-    public function show(StudentExercise $studentExercise)
+    public function show($id , $practice_id)
     {
         //
+        $soulitions = StudentExercise::where('exercise_id', $practice_id)->with('reponce')->get();
+       // dd($soulitions);
+        return view('teacher.seeproposedsolutions' , ['id'=>$id, 'soulitions'=> $soulitions ]);
     }
 
     /**
@@ -80,9 +82,16 @@ class StudentExerciseController extends Controller
      * @param  \App\Model\StudentExercise  $studentExercise
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentExercise $studentExercise)
+    public function update(Request $request, $id, $practice_id)
     {
         //
+        $reponce = Reponce::find($request->input('id'));
+        $reponce->notice = $request->input('notice');
+        $reponce->status = 1;
+        $reponce->save();
+        
+        $soulitions = StudentExercise::where('exercise_id', $practice_id)->with('reponce')->get();
+        return view('teacher.seeproposedsolutions', ['id' => $id, 'soulitions' => $soulitions]);
     }
 
     /**

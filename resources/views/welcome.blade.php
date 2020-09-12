@@ -30,7 +30,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a class="nav-link text-white" href="{{ route('course.index') }}">Cources</a></li>
-                        <li class="nav-item active"><a class="nav-link text-white" href="#">Teachers</a></li>
                         @auth
                         <li class="nav-item active"><a class="nav-link text-white" href="{{ url('/home') }}">Home</a>
                         </li>

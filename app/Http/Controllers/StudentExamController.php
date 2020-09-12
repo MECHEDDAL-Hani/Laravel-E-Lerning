@@ -54,12 +54,14 @@ class StudentExamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\StudentExam  $studentExam
      * @return \Illuminate\Http\Response
      */
-    public function show(StudentExam $studentExam)
+    public function show($id, $practice_id)
     {
         //
+        $soulitions = StudentExam::where('exam_id', $practice_id)->with('reponce')->get();
+        //dd($soulitions);
+        return view('teacher.seeproposedsolutionsexam', ['id' => $id, 'soulitions' => $soulitions]);
     }
 
     /**
@@ -77,12 +79,23 @@ class StudentExamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\StudentExam  $studentExam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentExam $studentExam)
+    public function update( $id, $practice_id, Request $request)
     {
         //
+        $reponce = Reponce::find($request->input('id'));
+        $reponce->notice = $request->input('notice');
+        $reponce->status = 1;
+        $reponce->save();
+
+        $studentexam = StudentExam::find($request->input('examid'));
+        $studentexam->note = $request->input('note');
+        $studentexam->save();
+
+        $soulitions = StudentExam::where('exam_id', $practice_id)->with('reponce')->get();
+        //dd($soulitions);
+        return view('teacher.seeproposedsolutionsexam', ['id' => $id, 'soulitions' => $soulitions]);
     }
 
     /**

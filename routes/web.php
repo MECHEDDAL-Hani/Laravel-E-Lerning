@@ -55,12 +55,18 @@ Route::get('/course/info/{id}/showexam/{practice_id}', 'ExamController@show')->n
 Route::post('/course/{id}/resource', 'ResourceController@destroy')->name('resource.destroy');
 Route::post('/course/register', 'StudentCourseController@store')->name('studentcourse.store');
 
-Route::get('/course/{id}/info', 'CourseController@info2')->name('course.info2');
-Route::get('/course/info/{id}/showlesson/{resource_id}', 'LessonController@show2')->name('lesson.show2');
-Route::get('/course/info/{id}/showexercise/{practice_id}', 'ExerciseController@show2')->name('exercise.show2');
-Route::get('/course/info/{id}/showexam/{practice_id}', 'ExamController@show2')->name('exam.show2');
-Route::post('/course/info/studentexercise', 'StudentExerciseController@store')->name('studentexercise.store');
-Route::post('/course/info/studentexam', 'StudentExamController@store')->name('studentexam.store');
+Route::get('/course/{id}/info2', 'CourseController@info2')->name('course.info2');
+Route::get('/course/info/{id}/showlesson2/{resource_id}', 'LessonController@show2')->name('lesson.show2');
+Route::get('/course/info/{id}/showexercise2/{practice_id}', 'ExerciseController@show2')->name('exercise.show2');
+Route::get('/course/info/{id}/showexam2/{practice_id}', 'ExamController@show2')->name('exam.show2');
+Route::post('/course/info/studentexercise2', 'StudentExerciseController@store')->name('studentexercise.store');
+Route::post('/course/info/studentexam2', 'StudentExamController@store')->name('studentexam.store');
+
+Route::get('/course/info/{id}/showexercise/{practice_id}/seeproposedsolutions', 'StudentExerciseController@show')->name('StudentExercise.show');
+Route::post('/course/info/{id}/showexercise/{practice_id}/seeproposedsolutions', 'StudentExerciseController@update')->name('StudentExercise.update');
+
+Route::get('/course/info/{id}/showexam/{practice_id}/seeproposedsolutions', 'StudentExamController@show')->name('StudentExam.show');
+Route::post('/course/info/{id}/showexam/{practice_id}/seeproposedsolutions', 'StudentExamController@update')->name('StudentExam.update');
 
 
 

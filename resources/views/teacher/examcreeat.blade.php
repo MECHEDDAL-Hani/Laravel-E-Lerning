@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="card">
-        <h4 class="card-title text-center">New Exercise</h4>
+        <h4 class="card-title text-center">New Exam</h4>
         <form method="POST" class="my-login-validation" action="{{ url( route('exam.store') ) }}">
             @csrf
             <input type="hidden" value="{{ $id }}" name="id_course">

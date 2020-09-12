@@ -20,4 +20,10 @@ class StudentExam extends Model
      * @var array
      */
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function reponce()
+    {
+        return $this->hasOne('App\Model\reponce', 'id', 'reponce_id');
+    }
+
 }
