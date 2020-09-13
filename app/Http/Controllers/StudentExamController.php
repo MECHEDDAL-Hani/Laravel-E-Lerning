@@ -73,6 +73,7 @@ class StudentExamController extends Controller
     public function edit(StudentExam $studentExam)
     {
         //
+        
     }
 
     /**
@@ -91,6 +92,7 @@ class StudentExamController extends Controller
 
         $studentexam = StudentExam::find($request->input('examid'));
         $studentexam->note = $request->input('note');
+        $studentexam->status = 1;
         $studentexam->save();
 
         $soulitions = StudentExam::where('exam_id', $practice_id)->with('reponce')->get();

@@ -42,6 +42,7 @@
                                                 <form method="POST" action="{{ url( route('StudentExercise.update' , [$id , $soulition->exercise_id ]) ) }}">
                                                     @csrf
                                                     <input type="hidden" value="{{$soulition->reponce->id}}" name="id">
+                                                    <input type="hidden" value="{{$soulition->id}}" name="exerciseid">
                                                     <div class="form-group">
                                                         <textarea name="notice" cols="30" rows="10" class="form-control"></textarea>
                                                     </div>

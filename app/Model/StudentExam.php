@@ -26,4 +26,9 @@ class StudentExam extends Model
         return $this->hasOne('App\Model\reponce', 'id', 'reponce_id');
     }
 
+    public function exam()
+    {
+        return $this->hasOne('App\Model\exam', 'practice_id', 'exam_id');
+    }
+
 }

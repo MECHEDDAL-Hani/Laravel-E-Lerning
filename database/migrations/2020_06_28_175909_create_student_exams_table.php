@@ -20,6 +20,7 @@ class CreateStudentExamsTable extends Migration
             $table->unsignedBigInteger('exam_id');
             $table->unsignedBigInteger('reponce_id');
             $table->integer('note')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
             $table->foreign('student_id')->references('user_id')->on('students');
             $table->foreign('exam_id')->references('practice_id')->on('exams');

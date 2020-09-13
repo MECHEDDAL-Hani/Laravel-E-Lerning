@@ -25,4 +25,9 @@ class StudentExercise extends Model
     {
         return $this->hasOne('App\Model\reponce', 'id', 'reponce_id');
     }
+
+     public function exercise()
+    {
+        return $this->hasOne('App\Model\exercise', 'practice_id', 'exercise_id');
+    }
 }

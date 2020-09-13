@@ -89,6 +89,11 @@ class StudentExerciseController extends Controller
         $reponce->notice = $request->input('notice');
         $reponce->status = 1;
         $reponce->save();
+
+        $studentexercise = StudentExercise::find($request->input('exerciseid'));
+        $studentexercise->note = $request->input('note');
+        $studentexercise->status = 1;
+        $studentexercise->save();
         
         $soulitions = StudentExercise::where('exercise_id', $practice_id)->with('reponce')->get();
         return view('teacher.seeproposedsolutions', ['id' => $id, 'soulitions' => $soulitions]);

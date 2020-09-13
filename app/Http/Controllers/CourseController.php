@@ -6,6 +6,8 @@ use App\Model\Course;
 use App\Model\Exam;
 use App\Model\Exercise;
 use App\Model\Lesson;
+use App\Model\StudentExam;
+use App\Model\StudentExercise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -114,6 +116,13 @@ class CourseController extends Controller
     public function info2($id)
     {
         return
-            view('student.courseinfo', ['id' => $id, 'lessons' => Lesson::with('resource')->get(), 'exercises' => Exercise::with('practice')->get(), 'exams' => Exam::with('practice')->get()]);
+            view('student.courseinfo', [
+                'id' => $id,
+                'lessons' => Lesson::with('resource')->get(),
+                'exercises' => Exercise::with('practice')->get(),
+                'exams' => Exam::with('practice')->get(),
+                'solvexercises' => StudentExercise::where('status', 1)->with('exercise')->with('reponce')->get(),
+                'solvexams' =>  StudentExam::where('status', 1)->with('exam')->with('reponce')->get(),
+            ]);
     }
 }

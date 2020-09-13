@@ -13,17 +13,16 @@ class CreateStudentExercisesTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_exercises', function (Blueprint $table) {
-           
+        Schema::create('student_exercises', function (Blueprint $table) {  
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('exercise_id');
-            $table->unsignedBigInteger('reponce_id'); 
+            $table->unsignedBigInteger('reponce_id');
+            $table->integer('status')->default(0);
             $table->timestamps();
             $table->foreign('student_id')->references('user_id')->on('students');
             $table->foreign('exercise_id')->references('practice_id')->on('exercises');
-            $table->foreign('reponce_id')->references('id')->on('reponces');
-        
+            $table->foreign('reponce_id')->references('id')->on('reponces');  
         });
     }
 
