@@ -91,7 +91,6 @@ class StudentExerciseController extends Controller
         $reponce->save();
 
         $studentexercise = StudentExercise::find($request->input('exerciseid'));
-        $studentexercise->note = $request->input('note');
         $studentexercise->status = 1;
         $studentexercise->save();
         

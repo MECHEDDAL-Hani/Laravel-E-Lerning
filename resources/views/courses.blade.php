@@ -8,7 +8,6 @@
         <table class="table table-hover text-center">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Teacher</th>
@@ -18,7 +17,6 @@
             <tbody>
                 @foreach ($courses as $course)
                 <tr>
-                    <td scope="row">{{$course->id}}</td>
                     <td>{{$course->title}}</td>
                     <td>{{$course->description}}</td>
                     <td>{{$course->teacher->student->user->name}}</td>
